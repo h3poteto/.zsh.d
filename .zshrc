@@ -48,8 +48,16 @@ setopt IGNORE_EOF
 setopt NO_FLOW_CONTROL
 setopt NO_BEEP
 
+
+
+
 ###################################
 ## custom
+##################################
+
+source $HOME/.zsh.d/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
 
 export PATH=/usr/local/bin:$PATH
 export PATH="$HOME/.rbenv/bin:$PATH"
