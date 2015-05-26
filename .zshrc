@@ -78,15 +78,10 @@ eval "$(rbenv init -)"
 
 alias g='git'
 
-# for go lang
-if [ -x "`which go`" ]; then
-  export GOROOT=`go env GOROOT`
-  export GOPATH=$HOME/go
-  export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-fi
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
 eval "$(direnv hook zsh)"
 export EDITOR=emacs
+export PATH="$HOME/.cask/bin:$PATH"
