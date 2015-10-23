@@ -10,7 +10,7 @@ setopt share_history
 
 # 補完
 autoload -Uz compinit
-compinit
+compinit -u
 
 setopt print_eight_bit
 
