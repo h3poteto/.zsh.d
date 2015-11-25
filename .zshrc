@@ -14,6 +14,8 @@ compinit -u
 
 setopt print_eight_bit
 
+setopt nonomatch
+
 # VCSの情報を取得するzshの便利関数 vcs_infoを使う
 autoload -Uz vcs_info
 
@@ -63,7 +65,6 @@ add-zsh-hook chpwd chpwd_recent_dirs
 bindkey '^x^r' anyframe-widget-execute-history
 bindkey '^xb' anyframe-widget-cdr
 bindkey '^x^b' anyframe-widget-checkout-git-branch
-
 
 
 
