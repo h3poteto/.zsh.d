@@ -6,7 +6,8 @@ HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-setopt share_history
+# 履歴の共有はしない
+# setopt share_history
 
 # 補完
 autoload -Uz compinit
