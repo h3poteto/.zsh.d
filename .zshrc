@@ -130,4 +130,4 @@ function peco-ec2ssh() {
   zle clear-screen
 }
 zle -N peco-ec2ssh
-bindkey '^re' peco-ec2ssh
+bindkey '^t' peco-ec2ssh
