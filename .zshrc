@@ -11,7 +11,7 @@ SAVEHIST=1000000
 
 # 補完
 autoload -Uz compinit
-compinit -u
+compinit -C
 
 setopt print_eight_bit
 
