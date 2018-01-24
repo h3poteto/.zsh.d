@@ -1,6 +1,6 @@
 # プラグインマネージャとしてzplugを使用することを前提にしている
 # そのため先に~/.zshrcにsource ~/.zplug/init.zshの記述をした上でこのファイルを読むこと
-# https://github.com/zplug/zplug
+# その他環境による差分もあるので，こちらを参照: https://github.com/zplug/zplug
 
 zplug "zsh-users/zsh-syntax-highlighting"
 
