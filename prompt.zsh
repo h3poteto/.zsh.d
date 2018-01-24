@@ -3,6 +3,9 @@
 autoload colors
 colors
 
+# zsh-autosuggestionsがハイライトする文字色を変更する
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=4'
+
 # VCSの情報を取得するzshの便利関数 vcs_infoを使う
 autoload -Uz vcs_info
 autoload -Uz add-zsh-hook
