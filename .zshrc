@@ -4,6 +4,7 @@
 
 zplug "zsh-users/zsh-syntax-highlighting", defer:3
 zplug "mollifier/anyframe"
+zplug "zsh-users/zsh-completions"
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -17,6 +18,6 @@ zplug load --verbose
 
 source ./config.zsh
 source ./prompt.zsh
-source ./keybind.zsh
 source ./env.zsh
 source ./function.zsh
+source ./keybind.zsh
