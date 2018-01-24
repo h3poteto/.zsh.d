@@ -2,13 +2,58 @@
 
 個人的なzshの設定になります．
 
-## AWS EC2
-必要になるもの．
+## zplug
+pluginのインストールにzplugを利用しています．
+[公式リポジトリ](https://github.com/zplug/zplug#installation) を参考にプラットフォームに合った形でzplugをインストールしてください．
 
-- aws-cli
-- jq
-- peco
+また，このリポジトリで提供する共通設定を読み込む前にzplugを初期化する必要があります．
+`~/.zshrc` では以下のようにして読み込みます．
 
+```sh
+source ~/.zplug/init.zsh
+source ~/.zsh.d/.zshrc
 ```
-export EC2_SSH_USER="ubuntu"
+
+## 別途必要になるもの
+
+- [direnv](https://github.com/direnv/direnv)
+- [aws-cli](https://docs.aws.amazon.com/cli/latest/userguide/installing.html)
+- [jq](https://stedolan.github.io/jq/)
+- [peco](https://github.com/peco/peco)
+
+### peco-ec2ssh
+awsのアカウント情報からログインできるサーバ一覧を表示し，ログインする関数を提供します．この関数の実行には，
+
+- [aws-cli](https://docs.aws.amazon.com/cli/latest/userguide/installing.html)
+- [jq](https://stedolan.github.io/jq/)
+- [peco](https://github.com/peco/peco)
+
+が必要になります．
+
+以下のような設定を `~/.zshrc` に書くことで利用できます．
+
+```sh
+export EC2_SSH_USER=ec2-user
+export AWS_PROFILE=default
+
+function peco-ec2ssh-default() { peco-ec2ssh $AWS_PROFILE ap-northeast-1 $EC2_SSH_USER }
+zle -N peco-ec2ssh-default
+bindkey '^t' peco-ec2ssh-default
+```
+
+### 起動時間の計測
+zshの起動が遅い場合には起動時間を計測することができます．
+
+`~/.zshenv` で `zprof` を読み込みます．
+
+```sh
+zmodload zsh/zprof && zprof
+```
+
+そして `/.zshrc` で結果を表示します．
+
+```sh
+if (which zprof > /dev/null) ;then
+  zprof | cat
+fi
 ```
