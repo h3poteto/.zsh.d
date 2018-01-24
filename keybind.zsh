@@ -1,9 +1,3 @@
-### plugin
-fpath=($HOME/.zsh.d/anyframe(N-/) $fpath)
-
-autoload -Uz anyframe-init
-anyframe-init
-
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
 
