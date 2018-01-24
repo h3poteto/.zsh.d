@@ -44,6 +44,8 @@ setopt NO_FLOW_CONTROL
 # BEEP音を鳴らさない
 setopt NO_BEEP
 
+setopt PROMPT_SUBST
+
 # シェル間の履歴共有をする
 setopt SHARE_HISTORY
 
