@@ -75,6 +75,7 @@ function _update_vcs_info_msg() {
 
 add-zsh-hook precmd _update_vcs_info_msg
 
-PROMPT="%F{blue}[%n]%f:%{${fg[cyan]}%}%~%{${reset_color}%}$ "
+PROMPT=$'%{\e[38;5;045m%}[%n]%{\e[0m%}:%{${fg[cyan]}%}%~%{${reset_color}%}$ '
+#PROMPT="[%n]:%{${fg[cyan]}%}%~%{${reset_color}%}$ "
 
 PROMPT2='[%n]> '
