@@ -2,8 +2,9 @@
 # そのため先に~/.zshrcにsource ~/.zplug/init.zshの記述をした上でこのファイルを読むこと
 # その他環境による差分もあるので，こちらを参照: https://github.com/zplug/zplug
 
-zplug "zsh-users/zsh-syntax-highlighting", defer:3
 zplug "mollifier/anyframe"
+zplug "mollifier/cd-gitroot"
+zplug "zsh-users/zsh-syntax-highlighting", defer:3
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-autosuggestions"
 

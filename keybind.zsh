@@ -7,3 +7,4 @@ bindkey '^x^b' anyframe-widget-checkout-git-branch
 bindkey '^r' peco-history-selection
 
 alias g='git'
+alias cdu='cd-gitroot'
