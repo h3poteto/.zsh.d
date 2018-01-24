@@ -17,7 +17,7 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "!"
 zstyle ':vcs_info:git:*' unstagedstr "+"
-zstyle ':vcs_info:git:*' formats '%F{magenta}[%b]' '%c%u'
+zstyle ':vcs_info:git:*' formats '%F{blue}[%b]' '%c%u'
 zstyle ':vcs_info:git:*' actionformats '%F{red}[%b|%a]' '%c%u'
 
 
