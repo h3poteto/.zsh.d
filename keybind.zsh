@@ -9,3 +9,4 @@ bindkey '^f' peco-z-search
 
 alias g='git'
 alias cdu='cd-gitroot'
+alias ghb='gitit branch'
