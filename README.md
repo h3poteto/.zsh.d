@@ -41,3 +41,19 @@ zle -N peco-ec2ssh-default
 bindkey '^t' peco-ec2ssh-default
 ```
 
+### 起動時間の計測
+zshの起動が遅い場合には起動時間を計測することができます．
+
+`~/.zshenv` で `zprof` を読み込みます．
+
+```sh
+zmodload zsh/zprof && zprof
+```
+
+そして `/.zshrc` で結果を表示します．
+
+```sh
+if (which zprof > /dev/null) ;then
+  zprof | cat
+fi
+```
