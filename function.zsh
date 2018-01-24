@@ -13,7 +13,7 @@ function peco-ec2ssh() {
 zle -N peco-ec2ssh
 
 function peco-history-selection() {
-    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+    BUFFER=`history -nr 1 | awk '!a[$0]++' | peco`
     CURSOR=$#BUFFER
     zle reset-prompt
 }
