@@ -5,6 +5,7 @@
 zplug "zsh-users/zsh-syntax-highlighting", defer:3
 zplug "mollifier/anyframe"
 zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-autosuggestions"
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
