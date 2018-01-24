@@ -17,8 +17,8 @@ precmd () {
 }
 
 # バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
-RPROMPT="%1(v|%F{cyan}%1v%f|)"
+RPROMPT="%1(v|%F{magenta}%1v%f|)"
 
-PROMPT="[%n]:%{${fg[yellow]}%}%~%{${reset_color}%}$ "
+PROMPT="[%n]:%{${fg[cyan]}%}%~%{${reset_color}%}$ "
 
 PROMPT2='[%n]> '
