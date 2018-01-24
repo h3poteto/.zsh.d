@@ -17,8 +17,8 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "!"
 zstyle ':vcs_info:git:*' unstagedstr "+"
-zstyle ':vcs_info:git:*' formats '[%b]' '%c%u'
-zstyle ':vcs_info:git:*' actionformats '[%b|%a]' '%c%u'
+zstyle ':vcs_info:git:*' formats '%F{magenta}[%b]' '%c%u'
+zstyle ':vcs_info:git:*' actionformats '%F{red}[%b|%a]' '%c%u'
 
 
 zstyle ':vcs_info:git+set-message:*' hooks \
@@ -62,7 +62,7 @@ function _update_vcs_info_msg() {
         # vcs_info で情報を取得した場合
         # $vcs_info_msg_0_ , $vcs_info_msg_1_ , $vcs_info_msg_2_ を
         # それぞれ緑、黄色、赤で表示する
-        [[ -n "$vcs_info_msg_0_" ]] && messages+=( "%F{magenta}${vcs_info_msg_0_}%f" )
+        [[ -n "$vcs_info_msg_0_" ]] && messages+=( "${vcs_info_msg_0_}%f" )
         [[ -n "$vcs_info_msg_1_" ]] && messages+=( "%F{yellow}${vcs_info_msg_1_}%f" )
         [[ -n "$vcs_info_msg_2_" ]] && messages+=( "%F{red}${vcs_info_msg_2_}%f" )
 
