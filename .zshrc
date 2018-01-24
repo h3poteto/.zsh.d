@@ -8,7 +8,7 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:3
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "peterhurford/git-it-on.zsh"
-zplug "b4b4r07/enhancd", use:init.sh
+zplug "rupa/z", use:"*.sh"
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
