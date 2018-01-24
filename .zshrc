@@ -16,8 +16,9 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
 
-source ./config.zsh
-source ./prompt.zsh
-source ./env.zsh
-source ./function.zsh
-source ./keybind.zsh
+script_dir=$(cd $(dirname $0); pwd)
+source $script_dir/config.zsh
+source $script_dir/prompt.zsh
+source $script_dir/env.zsh
+source $script_dir/function.zsh
+source $script_dir/keybind.zsh
