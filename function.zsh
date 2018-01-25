@@ -12,13 +12,6 @@ function peco-ec2ssh() {
 }
 zle -N peco-ec2ssh
 
-function peco-history-selection() {
-    BUFFER=`history -nr 1 | awk '!a[$0]++' | peco`
-    CURSOR=$#BUFFER
-    zle reset-prompt
-}
-zle -N peco-history-selection
-
 function peco-z-search() {
     which peco z > /dev/null
     if [ $? -ne 0 ]; then
