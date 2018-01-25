@@ -42,6 +42,22 @@ zle -N peco-ec2ssh-default
 bindkey '^t' peco-ec2ssh-default
 ```
 
+### peco-ec2ssh-with-proxy
+上記のsshログイン時にプロキシサーバを踏み台にするパターンを提供します．
+
+以下のような `~/.zshrc` を作ります．
+
+```sh
+export EC2_SSH_USER=ec2-user
+
+function peco-ec2ssh-default-proxy() { peco-ec2ssh-with-proxy default ap-northeast-1 devops default $EC2_SSH_USER}
+zle -N peco-ec2ssh-default-proxy
+bindkey '^t' peco-ec2ssh-default-proxy
+```
+
+これでまずproxyサーバの選択肢が示されます．
+そこでproxyサーバを選択した後，次にログイン先のサーバ選択肢が出てきます．
+
 ### 起動時間の計測
 zshの起動が遅い場合には起動時間を計測することができます．
 
