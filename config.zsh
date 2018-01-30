@@ -2,8 +2,9 @@
 bindkey -e
 
 # 補完
-autoload -Uz compinit
-compinit -C
+# compinitはzplug内でloadされるので不要
+# autoload -Uz compinit
+# compinit -C
 
 # グロブ展開をさせない
 setopt nonomatch

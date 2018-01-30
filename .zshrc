@@ -1,26 +1,20 @@
-# プラグインマネージャとしてzplugを使用することを前提にしている
-# そのため先に~/.zshrcにsource ~/.zplug/init.zshの記述をした上でこのファイルを読むこと
-# その他環境による差分もあるので，こちらを参照: https://github.com/zplug/zplug
-
-zplug "mollifier/anyframe"
-zplug "mollifier/cd-gitroot"
-zplug "zsh-users/zsh-syntax-highlighting", defer:3
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "peterhurford/git-it-on.zsh"
-zplug "rupa/z", use:"*.sh"
-
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+# zplugを自動インストールする
+# https://github.com/zplug/zplug
+export ZPLUG_HOME=~/.zplug
+if [ ! -d "$ZPLUG_HOME" ];then
+    echo "install zplug"
+    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
 fi
 
-# Then, source plugins and add commands to $PATH
-zplug load --verbose
+source $ZPLUG_HOME/init.zsh
 
 script_dir=$(cd $(dirname $0); pwd)
+source $script_dir/plugins.zsh
+
+
+# Then, source plugins and add commands to $PATH
+zplug load
+
 source $script_dir/config.zsh
 source $script_dir/prompt.zsh
 source $script_dir/env.zsh
