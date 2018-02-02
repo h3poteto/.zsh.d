@@ -5,6 +5,7 @@ zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "peterhurford/git-it-on.zsh"
 zplug "rupa/z", use:"*.sh"
+zplug "h3poteto/zsh-ec2ssh"
 
 # プラグインを新規追加したらインストールする
 # if ! zplug check --verbose; then
@@ -13,3 +14,4 @@ zplug "rupa/z", use:"*.sh"
 #         echo; zplug install
 #     fi
 # fi
+
