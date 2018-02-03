@@ -3,62 +3,84 @@
 個人的なzshの設定になります．
 
 ## zplug
-pluginのインストールにzplugを利用しています．
-[公式リポジトリ](https://github.com/zplug/zplug#installation) を参考にプラットフォームに合った形でzplugをインストールしてください．
+### 初回
+pluginのインストールに[zplug](https://github.com/zplug/zplug)を利用しています．
+ただし，zplug自体のインストールは，スクリプト読み込み時に自動的に行われます．もし既に`$HOME/.zplug` が存在する場合は，ディレクトリを削除しておいてください．このディレクトが存在しない場合に限り，zplugのインストールスクリプトが実行されます．
 
-また，このリポジトリで提供する共通設定を読み込む前にzplugを初期化する必要があります．
-`~/.zshrc` では以下のようにして読み込みます．
+### plugin追加
+pluginを追加する場合は，`plugins.zsh` に追記し，
 
-```sh
-source ~/.zplug/init.zsh
-source ~/.zsh.d/.zshrc
+```bash
+zplug "h3poteto/zsh-ec2ssh"
+```
+
+zshを読み込み直した上でinstallします．
+
+```bash
+$ exec $SHELL -l
+$ zplug install
 ```
 
 ## 別途必要になるもの
 
 - [direnv](https://github.com/direnv/direnv)
-- [aws-cli](https://docs.aws.amazon.com/cli/latest/userguide/installing.html)
-- [jq](https://stedolan.github.io/jq/)
 - [peco](https://github.com/peco/peco)
+- [myaws](https://github.com/minamijoyo/myaws)
 - [gawk](https://www.gnu.org/software/gawk/)
 
-### peco-ec2ssh
+## zsh-ec2ssh
 awsのアカウント情報からログインできるサーバ一覧を表示し，ログインする関数を提供します．この関数の実行には，
 
-- [aws-cli](https://docs.aws.amazon.com/cli/latest/userguide/installing.html)
-- [jq](https://stedolan.github.io/jq/)
 - [peco](https://github.com/peco/peco)
+- [myaws](https://github.com/minamijoyo/myaws)
 
 が必要になります．
+
+myawsインストール後，awsの認証情報を `$HOME/.aws/credentials` に記述しておきます．
+
+```
+[default]
+aws_access_key_id = XXXXXX
+aws_secret_access_key = XXXXXX
+```
+
+### sshログイン
 
 以下のような設定を `~/.zshrc` に書くことで利用できます．
 
 ```sh
-export EC2_SSH_USER=ec2-user
-export AWS_PROFILE=default
+AWS_PROFILE_NAME=default
+AWS_DEFAULT_REGION=ap-northeast-1
+SSH_USER=h3poteto
+SSH_PRIVATE_KEY_PATH=$HOME/.ssh/id_rsa
 
-function peco-ec2ssh-default() { peco-ec2ssh $AWS_PROFILE ap-northeast-1 $EC2_SSH_USER }
-zle -N peco-ec2ssh-default
-bindkey '^t' peco-ec2ssh-default
+function zsh-ec2ssh-default() { zsh-ec2ssh $AWS_PROFILE_NAME $AWS_DEFAULT_REGION $SSH_USER $SSH_PRIVATE_KEY_PATH }
+zle -N zsh-ec2ssh-default
+bindkey '^t' zsh-ec2ssh-default # Ctrl + t
 ```
 
-### peco-ec2ssh-with-proxy
+### proxyを踏み台にしてssh
 上記のsshログイン時にプロキシサーバを踏み台にするパターンを提供します．
 
-以下のような `~/.zshrc` を作ります．
+以下のような定義を `~/.zshrc` に追記します．
 
 ```sh
-export EC2_SSH_USER=ec2-user
+AWS_PROFILE_NAME=production
+AWS_DEFAULT_REGION=ap-northeast-1
+SSH_USER=h3poteto
+AWS_PROXY_PROFILE=proxy
+SSH_PROXY_USER=proxy-login-user
+SSH_PRIVATE_KEY_PATH=$HOME/.ssh/id_rsa
 
-function peco-ec2ssh-default-proxy() { peco-ec2ssh-with-proxy default ap-northeast-1 devops default $EC2_SSH_USER}
-zle -N peco-ec2ssh-default-proxy
-bindkey '^t' peco-ec2ssh-default-proxy
+function zsh-ec2ssh-production-proxy() { zsh-ec2ssh-with-proxy $AWS_PROFILE_NAME $AWS_DEFAULT_REGION $SSH_USER $AWS_PROXY_PROFILE $SSH_PROXY_USER $SSH_PRIVATE_KEY_PATH }
+zle -N zsh-ec2ssh-production-proxy
+bindkey '^p' zsh-ec2ssh-production-proxy # Ctrl + p
 ```
 
 これでまずproxyサーバの選択肢が示されます．
 そこでproxyサーバを選択した後，次にログイン先のサーバ選択肢が出てきます．
 
-### 起動時間の計測
+## 起動時間の計測
 zshの起動が遅い場合には起動時間を計測することができます．
 
 `~/.zshenv` で `zprof` を読み込みます．
@@ -75,7 +97,7 @@ if (which zprof > /dev/null) ;then
 fi
 ```
 
-### linuxでzplugによるインストールがエラーになる
+## linuxでzplugによるインストールがエラーになる
 
 Ubuntu14.04でzplugを使っていたところ，下記のようなエラーがありました．
 
