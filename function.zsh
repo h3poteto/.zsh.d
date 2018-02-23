@@ -14,3 +14,25 @@ function peco-z-search() {
 }
 zle -N peco-z-search
 
+function _peco-git-log() {
+    local hash=$(git log --oneline --branches | peco | awk '{print $1}')
+    echo $hash
+    return
+}
+
+function peco-git-rebase() {
+    local hash=`_peco-git-log`
+    if [ -n "${hash}" ]; then
+        BUFFER="git rebase -i ${hash}"
+        if zle; then
+            zle accept-line
+        else
+            print -z "$BUFFER"
+        fi
+    fi
+    if zle; then
+        zle clear-screen
+    fi
+}
+zle -N peco-git-rebase
+
