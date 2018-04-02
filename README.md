@@ -2,6 +2,14 @@
 
 個人的なzshの設定になります．
 
+## 導入
+
+zshをインストールした上で，`~/.zshrc` を作成し，以下のように読み込みます．
+
+```bash
+source $HOME/.zsh.d/.zshrc
+```
+
 ## zplug
 ### 初回
 pluginのインストールに[zplug](https://github.com/zplug/zplug)を利用しています．
