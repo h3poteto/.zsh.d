@@ -55,4 +55,6 @@ HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-export TERM=xterm-256color
+if [ "$TERM" = "xterm" ]; then
+   export TERM=xterm-256color
+fi
