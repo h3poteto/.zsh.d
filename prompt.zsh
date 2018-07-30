@@ -79,6 +79,7 @@ function _update_vcs_info_msg() {
 add-zsh-hook precmd _update_vcs_info_msg
 
 # https://qiita.com/butaosuinu/items/770a040bc9cfe22c71f4
-PROMPT=$'%{\e[38;5;111m%}[%n]%{\e[0m%}:%{${fg[cyan]}%}%~%{${reset_color}%}$ '
+PROMPT=$'%{\e[38;5;111m%}[%n]%{\e[0m%}:%{${fg[cyan]}%}%~%{${reset_color}%}
+$ '
 
 PROMPT2='[%n]> '
