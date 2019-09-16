@@ -8,10 +8,10 @@ zplug "rupa/z", use:"*.sh"
 zplug "h3poteto/zsh-ec2ssh"
 
 # プラグインを新規追加したらインストールする
-# if ! zplug check --verbose; then
-#     printf "Install? [y/N]: "
-#     if read -q; then
-#         echo; zplug install
-#     fi
-# fi
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
 
