@@ -15,3 +15,5 @@ alias e='~/.emacs.d/emacs-client'
 alias k='kubectl'
 alias tf='terraform'
 alias kc='kubectx | peco | xargs kubectx'
+alias kn='kubens | peco | xargs kubens'
+
