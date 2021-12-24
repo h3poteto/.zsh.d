@@ -76,13 +76,18 @@ function _update_vcs_info_msg() {
     RPROMPT="$prompt"
 }
 
+function _aws_profile_ps1() {
+    [[ -z $AWS_PROFILE ]] && return
+    echo ":%F{yellow}<aws|${AWS_PROFILE}>%f"
+}
+
 add-zsh-hook precmd _update_vcs_info_msg
 
 export KUBE_PS1_SYMBOL_USE_IMG=true
 source $HOME/.zplug/repos/jonmosco/kube-ps1/kube-ps1.sh
 
 # https://qiita.com/butaosuinu/items/770a040bc9cfe22c71f4
-PROMPT=$'%{\e[38;5;111m%}[%n]%{\e[0m%}:$(kube_ps1):%{${fg[cyan]}%}%~%{${reset_color}%}
+PROMPT=$'%{\e[38;5;111m%}[%n]%{\e[0m%}:$(kube_ps1)$(_aws_profile_ps1):%{${fg[cyan]}%}%~%{${reset_color}%}
 $ '
 
 PROMPT2='[%n]> '
