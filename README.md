@@ -35,6 +35,8 @@ $ zplug install
 - [peco](https://github.com/peco/peco)
 - [myaws](https://github.com/minamijoyo/myaws)
 - [gawk](https://www.gnu.org/software/gawk/)
+- [kubectx + kubens](https://github.com/ahmetb/kubectx)
+- [awsp](https://github.com/johnnyopao/awsp)
 
 ## zsh-ec2ssh
 awsのアカウント情報からログインできるサーバ一覧を表示し，ログインする関数を提供します．この関数の実行には，

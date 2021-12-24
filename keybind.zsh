@@ -7,6 +7,7 @@ bindkey '^x^b' anyframe-widget-checkout-git-branch
 bindkey '^f' peco-z-search
 bindkey '^g^r' peco-git-rebase
 
+alias awsp="source _awsp"
 alias g='git'
 alias cdu='cd-gitroot'
 alias ghb='gitit branch'
