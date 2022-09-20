@@ -36,7 +36,7 @@ $ zplug install
 - [myaws](https://github.com/minamijoyo/myaws)
 - [gawk](https://www.gnu.org/software/gawk/)
 - [kubectx + kubens](https://github.com/ahmetb/kubectx)
-- [awsp](https://github.com/johnnyopao/awsp)
+- [awsp](https://github.com/itouuuuuuuuu/awsp)
 
 ## zsh-ec2ssh
 awsのアカウント情報からログインできるサーバ一覧を表示し，ログインする関数を提供します．この関数の実行には，
@@ -89,6 +89,24 @@ bindkey '^p' zsh-ec2ssh-production-proxy # Ctrl + p
 
 これでまずproxyサーバの選択肢が示されます．
 そこでproxyサーバを選択した後，次にログイン先のサーバ選択肢が出てきます．
+
+
+### awsp
+一部のnode環境ではprofile選択後にターミナルがクラッシュします（[参考](https://github.com/johnnyopao/awsp/issues/5)）．この場合は
+
+```
+$ git clone https://github.com/itouuuuuuuuu/awsp.git
+$ cd awsp
+$ npm i
+```
+
+とした上で，
+
+```
+alias awsp="source ~/awsp/run.sh"
+```
+
+をzshrcに指定することで回避します．
 
 ## 起動時間の計測
 zshの起動が遅い場合には起動時間を計測することができます．
